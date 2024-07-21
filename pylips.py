@@ -120,7 +120,8 @@ class Pylips:
             else:
                 print("Please provide a valid command with a '--command' argument")
         else:
-            print("Please enable mqtt_listen in settings.ini or provide a valid command with a '--command' argument")
+            # print("Please enable mqtt_listen in settings.ini or provide a valid command with a '--command' argument")
+            pass
                
     def is_online(self, host):
         """
@@ -252,7 +253,7 @@ class Pylips:
             if verbose:
                 print("Sending GET request to", str(self.config["TV"]["protocol"]) + str(self.config["TV"]["host"]) + ":" + str(self.config["TV"]["port"]) + "/" + str(self.config["TV"]["apiv"]) + "/" + str(path))
             try:
-                r = session.get(str(self.config["TV"]["protocol"]) + str(self.config["TV"]["host"]) + ":" + str(self.config["TV"]["port"]) + "/" + str(self.config["TV"]["apiv"]) + "/" + str(path), verify=False, auth=HTTPDigestAuth(str(self.config["TV"]["user"]), str(self.config["TV"]["pass"])), timeout=2)
+                r = session.post(str(self.config["TV"]["protocol"]) + str(self.config["TV"]["host"]) + ":" + str(self.config["TV"]["port"]) + "/" + str(self.config["TV"]["apiv"]) + "/" + str(path), verify=False, auth=HTTPDigestAuth(str(self.config["TV"]["user"]), str(self.config["TV"]["pass"])), timeout=2, json={ "app_name": "Pylips"} )
             except Exception:
                 err_count += 1
                 continue
