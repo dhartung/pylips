@@ -35,7 +35,7 @@ parser.add_argument("--verbose", dest="verbose", help="Display feedback")
 parser.add_argument("--apiv", dest="apiv", help="Api version", default="")
 parser.add_argument("--config", dest="config", help="Path to config file", default=os.path.dirname(os.path.realpath(__file__))+os.path.sep+"settings.ini")
 
-args = parser.parse_args()
+args, unkown = parser.parse_known_args()
 
 class Pylips:
     def __init__(self, ini_file):

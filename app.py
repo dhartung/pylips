@@ -2,6 +2,9 @@ from flask import Flask, request, abort
 from pylips import Pylips, args
 import os
 
+app = Flask(__name__)
+pylips = Pylips(args.config)
+
 TOKEN = os.environ.get("HTTP_TOKEN")
 def assert_token():
     if TOKEN is None:
@@ -11,7 +14,6 @@ def assert_token():
         abort(401)
 
 
-app = Flask(__name__)
 @app.route('/')
 def index():
     assert_token()
@@ -36,11 +38,9 @@ def command(commandString: str):
     return pylips.run_command(commandString)
 
 @app.route('/query/<command>')
-def command(commandString: str):
+def query(commandString: str):
     assert_token()
     return pylips.run_command(commandString)
 
-pylips: Pylips
 if __name__ == '__main__':
-    pylips = Pylips(args.config)
     app.run()
