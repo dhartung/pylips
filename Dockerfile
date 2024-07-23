@@ -7,4 +7,4 @@ RUN pip install -r ./requirements.txt
 RUN pip install gunicorn
 
 
-ENTRYPOINT [ "gunicorn", "-w" "1", "-b", "0.0.0.0", "app"]
+ENTRYPOINT [ "/usr/local/bin/gunicorn", "-w", "1", "-b", "0.0.0.0", "app:app"]

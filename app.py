@@ -33,14 +33,14 @@ def index():
     return result
 
 @app.route('/command/<command>')
-def command(commandString: str):
+def command(command: str):
     assert_token()
-    return pylips.run_command(commandString)
+    return pylips.run_command(command)
 
 @app.route('/query/<command>')
-def query(commandString: str):
+def query(command: str):
     assert_token()
-    return pylips.run_command(commandString)
+    return pylips.run_command(command)
 
 if __name__ == '__main__':
     app.run()
