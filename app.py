@@ -15,7 +15,7 @@ def assert_token():
 
     if TOKEN != request.args.get("token", default="", type=str):
         print("Invalid token")
-        abort(401)
+        abort(401, "Invalid token")
 
 
 @app.route('/')
@@ -59,7 +59,7 @@ def script(script: str):
         importlib.reload(script_module)
         return script_module.run(pylips, request)
     except ModuleNotFoundError:
-        abort(404)
+        abort(404, f"No script with name {script_name} found")
 
 if __name__ == '__main__':
     app.run()
