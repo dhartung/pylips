@@ -5,7 +5,7 @@
 		}
 	},
 	"get": {
-    "ambihue_status": {
+   		"ambihue_status": {
 			"path": "HueLamp/power"
 		},
 		"current_channel": {
@@ -25,6 +25,9 @@
 		},
 		"volume": {
 			"path": "audio/volume"
+		},
+		"settings": {
+			"path": "menuitems/settings/structure"
 		}
 	},
 	"post": {

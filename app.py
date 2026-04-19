@@ -13,7 +13,7 @@ def assert_token():
     if TOKEN is None:
         return
 
-    if TOKEN != request.args.get("token", default="", type=str):
+    if TOKEN != request.args.get("token", default="", type=str) and TOKEN != request.headers.get('Authorization', ''):
         print("Invalid token")
         abort(401, "Invalid token")
 
