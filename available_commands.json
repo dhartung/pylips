@@ -632,6 +632,9 @@
 		"shutdown": {
 			"shell": "reboot -p"
 		},
+		"reboot": {
+			"shell": "reboot"
+		},
 		"print": {
 			"shell": "echo Hello World"
 		}
