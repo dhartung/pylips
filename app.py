@@ -7,7 +7,10 @@ import sys
 import subprocess
 
 app = Flask(__name__)
-pylips: Pylips
+pylips = Pylips(args.config)
+if not hasattr(pylips, "available_commands"):
+    print("Could not start pylips, please check logs", file=sys.stderr)
+    exit(1)
 
 TOKEN = os.environ.get("HTTP_TOKEN")
 
@@ -96,8 +99,4 @@ def adb(command: str):
         abort(400, result.stdout.decode("utf-8"))
 
 if __name__ == '__main__':
-    pylips = Pylips(args.config)
-    if not hasattr(pylips, "available_commands"):
-        print("Could not start pylips, please check logs", file=sys.stderr)
-        exit(1)
     app.run()
