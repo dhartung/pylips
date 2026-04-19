@@ -627,5 +627,13 @@
         }
       }
     }    
+	},
+	"adb": {
+		"shutdown": {
+			"shell": "reboot -p"
+		},
+		"print": {
+			"shell": "echo Hello World"
+		}
 	}
 }

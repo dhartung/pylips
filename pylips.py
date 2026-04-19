@@ -259,9 +259,8 @@ class Pylips:
                 continue
             if verbose:
                 print("Request sent!")
-            if len(r.text) > 0:
-                if print_response:
-                  print(r.text)
+            if print_response:
+                print(r.text)
                 return r.text
         else:
             if self.config["DEFAULT"]["mqtt_listen"].lower()=="true":
